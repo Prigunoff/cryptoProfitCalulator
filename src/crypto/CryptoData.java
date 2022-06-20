@@ -35,11 +35,38 @@ public class CryptoData {
         }
         return json;
     }
+    //Получает json-over//
+    //Получает цену валюты
+    public static double cryptoOnlinePrice (String setUrl){
+        JSONParser parser = new JSONParser();
+        String result = null;
+        double castedDouble=0.00;
+        try{
+            JSONObject jsonObject = (JSONObject) parser.parse(jsonGetRequest(setUrl));
+            result = (String) jsonObject.get("price");
+            castedDouble = Double.parseDouble(result);
 
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return castedDouble;
+    }
+    //Получает цену валюты-over
 
+    public double setDepAmount(){
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Insert dep amount");
+        double value= scan.nextDouble();
 
+        return value;
+    }
+    public double tokenPriceAtByMoment(){
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Insert token price at buy moment");
+        double value= scan.nextDouble();
 
-
+        return value;
+    }
 
 
 
