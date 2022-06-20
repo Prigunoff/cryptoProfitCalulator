@@ -26,5 +26,6 @@ public class Main {
         //Вычисления
         CryptoMath math = new CryptoMath(tokenName,depAmount,tokenPriceAtBuyMoment,priceResultXlm);
         math.outputResultCalc();
+
     }
 }

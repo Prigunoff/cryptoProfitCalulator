@@ -36,6 +36,7 @@ public class CryptoData {
         return json;
     }
     //Получает json-over//
+
     //Получает цену валюты
     public static double cryptoOnlinePrice (String setUrl){
         JSONParser parser = new JSONParser();
@@ -52,6 +53,7 @@ public class CryptoData {
         return castedDouble;
     }
     //Получает цену валюты-over
+
     //Получить имя валюты
     public static String cryptoOnlineName (String setUrl){
         JSONParser parser = new JSONParser();
@@ -68,10 +70,11 @@ public class CryptoData {
         return result;
     }
     //Получить имя валюты-over
+
     public double setDepAmount(){
         Scanner scan = new Scanner(System.in);
         System.out.println("Insert deposit amount");
-        while (!scan.hasNextInt()) {
+        while (!scan.hasNextDouble()) {
             String str = scan.nextLine().trim();
             System.out.printf("\"%s\" - not a number!%nEnter amount: ", str);
         }
@@ -88,11 +91,12 @@ public class CryptoData {
 
         return value;
     }
+
     public double tokenPriceAtByMoment(){
         Scanner scan = new Scanner(System.in);
         System.out.println("Insert token price at buy moment");
 
-        while (!scan.hasNextInt()) {
+        while (!scan.hasNextDouble()) {
             String str = scan.nextLine().trim();
             System.out.printf("\"%s\" - not a number!%nEnter amount: ", str);
         }
@@ -108,12 +112,6 @@ public class CryptoData {
         }
         return value;
     }
-
-
-
-
-
-
 
     public String getUrlXlm() {
         return urlXlm;
