@@ -10,12 +10,13 @@ public class CryptoMath {
     private double quantityOfTokens;
     private double depAmountRightNow;
     private double profit;
-    public CryptoMath(double depAmount,double tokenPriceAtBuyMoment,double parseTokenPrice){
+    private String tokenName;
+    public CryptoMath(String tokenName,double depAmount,double tokenPriceAtBuyMoment,double parseTokenPrice){
         //Конструктор получает данные
         this.depAmount = depAmount;
         this.tokenPriceAtBuyMoment = tokenPriceAtBuyMoment;
         this.xlmDouble = parseTokenPrice;
-
+        this.tokenName = tokenName;
     }
 
     public double resultQuantityOfTokens(){
@@ -33,12 +34,12 @@ public class CryptoMath {
     }
 
     public void outputResultCalc(){
-        System.out.println("Депозит: " + getDepAmount()+
-                " Цена покупки: " + getTokenPriceAtBuyMoment() +
-                " Текущая цена: " + getXlmDouble() +
-                " Количество токенов: " + Rounder.roundDownTokens(resultQuantityOfTokens()) +
-                " Депозит сейчас: " + Rounder.roundValueProfit(resultDepAmountNow()) +
-                " Profit: " + Rounder.roundValueProfit(resultProfit()));
+        System.out.println("Название токена: "+tokenName +", Депозит: " + getDepAmount()+
+                ", Цена покупки: " + getTokenPriceAtBuyMoment() +
+                ", Текущая цена: " + getXlmDouble() +
+                ", Количество токенов: " + Rounder.roundDownTokens(resultQuantityOfTokens()) +
+                ", Депозит сейчас: " + Rounder.roundValueProfit(resultDepAmountNow()) +
+                ", Profit: " + Rounder.roundValueProfit(resultProfit()));
     }
 
 

@@ -52,19 +52,60 @@ public class CryptoData {
         return castedDouble;
     }
     //Получает цену валюты-over
+    //Получить имя валюты
+    public static String cryptoOnlineName (String setUrl){
+        JSONParser parser = new JSONParser();
+        String result = null;
+        double castedDouble=0.00;
+        try{
+            JSONObject jsonObject = (JSONObject) parser.parse(jsonGetRequest(setUrl));
+            result = (String) jsonObject.get("symbol");
+//            castedDouble = Double.parseDouble(result);
 
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+    //Получить имя валюты-over
     public double setDepAmount(){
         Scanner scan = new Scanner(System.in);
-        System.out.println("Insert dep amount");
+        System.out.println("Insert deposit amount");
+        while (!scan.hasNextInt()) {
+            String str = scan.nextLine().trim();
+            System.out.printf("\"%s\" - not a number!%nEnter amount: ", str);
+        }
         double value= scan.nextDouble();
+
+        while (value <= 0) {
+            System.out.println("Incorrect value! Enter quantity: ");
+            while (!scan.hasNextDouble()) {
+                String str = scan.next().trim();
+                System.out.printf("\"%s\" - not a number!%nEnter amount: ", str);
+            }
+            value = scan.nextDouble();
+        }
 
         return value;
     }
     public double tokenPriceAtByMoment(){
         Scanner scan = new Scanner(System.in);
         System.out.println("Insert token price at buy moment");
+
+        while (!scan.hasNextInt()) {
+            String str = scan.nextLine().trim();
+            System.out.printf("\"%s\" - not a number!%nEnter amount: ", str);
+        }
         double value= scan.nextDouble();
 
+        while (value <= 0) {
+            System.out.println("Incorrect value! Enter quantity: ");
+            while (!scan.hasNextDouble()) {
+                String str = scan.next().trim();
+                System.out.printf("\"%s\" - not a number!%nEnter amount: ", str);
+            }
+            value = scan.nextDouble();
+        }
         return value;
     }
 
