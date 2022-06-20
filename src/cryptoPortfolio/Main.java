@@ -19,7 +19,7 @@ public class Main {
         depAmount =data.setDepAmount();
         //Цена токена на момент покупки
         tokenPriceAtBuyMoment = data.tokenPriceAtByMoment();
-
+        //Вычисления
         CryptoMath math = new CryptoMath(depAmount,tokenPriceAtBuyMoment,priceResultXlm);
         math.outputResultCalc();
     }

@@ -1,5 +1,8 @@
 package crypto;
 
+import utils.Rounder;
+
+
 public class CryptoMath {
     private double xlmDouble;
     private double depAmount;
@@ -30,9 +33,12 @@ public class CryptoMath {
     }
 
     public void outputResultCalc(){
-        System.out.println("Депозит: " + getDepAmount()+" Цена покупки: " + getTokenPriceAtBuyMoment() +
-                " Текущая цена: " + getXlmDouble() + " Количество токенов: " + resultQuantityOfTokens() +
-                " Депозит сейчас: " + resultDepAmountNow() + " Profit: " + resultProfit());
+        System.out.println("Депозит: " + getDepAmount()+
+                " Цена покупки: " + getTokenPriceAtBuyMoment() +
+                " Текущая цена: " + getXlmDouble() +
+                " Количество токенов: " + Rounder.roundDownTokens(resultQuantityOfTokens()) +
+                " Депозит сейчас: " + Rounder.roundValueProfit(resultDepAmountNow()) +
+                " Profit: " + Rounder.roundValueProfit(resultProfit()));
     }
 
 
