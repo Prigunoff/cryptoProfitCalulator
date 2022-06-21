@@ -11,7 +11,10 @@ import java.net.URL;
 import java.util.Scanner;
 
 public class CryptoData {
-    private String urlXlm ="https://www.binance.com/api/v3/ticker/price?symbol=XLMUSDT";
+    private String urlXlm = "https://www.binance.com/api/v3/ticker/price?symbol=XLMUSDT";
+
+    private String urlSol = "https://www.binance.com/api/v3/ticker/price?symbol=SOLUSDT";
+    private String urlNear = "https://www.binance.com/api/v3/ticker/price?symbol=NEARUSDT";
     //Получает json
     private static String streamToString(InputStream inputStream) {
         String text = new Scanner(inputStream, "UTF-8").useDelimiter("\\Z").next();
@@ -113,7 +116,29 @@ public class CryptoData {
         return value;
     }
 
+
+    public String tokenOption(String scanValue){
+        String value="";
+        if (scanValue.equals("Xlm") || scanValue.equals("xlm")){
+            value =getUrlXlm();
+        }else if(scanValue.equals("Solana") || scanValue.equals("solana")){
+            value =getUrlSol();
+        }else if(scanValue.equals("Near") || scanValue.equals("near")){
+            value = getUrlNear();
+        }
+
+        return value;
+    }
+
     public String getUrlXlm() {
         return urlXlm;
+    }
+
+    public String getUrlSol() {
+        return urlSol;
+    }
+
+    public String getUrlNear() {
+        return urlNear;
     }
 }
