@@ -2,10 +2,6 @@ package crypto;
 
 import utils.Rounder;
 
-import java.util.ArrayList;
-import java.util.List;
-
-
 public class CryptoMath {
     private double xlmDouble;
     private double depAmount;
@@ -42,9 +38,9 @@ public class CryptoMath {
                 ", Deposit now: " + Rounder.roundValueProfit(resultDepAmountNow()) +
                 ", Profit: " + Rounder.roundValueProfit(resultProfit()));
     }
-    //Возвращает массив из полученных данных
-    public double[] returnResultDouble(){
-        double[] array = {getDepAmount(),getTokenPriceAtBuyMoment(),getXlmDouble()
+    //Возвращает массив из полученных данных //
+    public Double[] returnResultDouble(){
+        Double[] array = {getDepAmount(),getTokenPriceAtBuyMoment(),getXlmDouble()
                 ,Rounder.roundDownTokens(resultQuantityOfTokens())
                 , Double.parseDouble(Rounder.roundValueProfit(resultDepAmountNow()))
                 , Double.parseDouble(Rounder.roundValueProfit(resultProfit()))
@@ -52,6 +48,7 @@ public class CryptoMath {
 
         return array;
     }
+
 
     public double getXlmDouble() {
         return xlmDouble;
@@ -66,5 +63,6 @@ public class CryptoMath {
     public double getTokenPriceAtBuyMoment() {
         return tokenPriceAtBuyMoment;
     }
+
 
 }

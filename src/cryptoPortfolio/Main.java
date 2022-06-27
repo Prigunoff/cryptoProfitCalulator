@@ -4,8 +4,7 @@ import crypto.CryptoMath;
 import db.DBConnection;
 import java.util.Scanner;
 
-import static crypto.CryptoData.cryptoOnlineName;
-import static crypto.CryptoData.cryptoOnlinePrice;
+import static crypto.CryptoData.*;
 
 
 public class Main {
@@ -15,19 +14,11 @@ public class Main {
     private static String tokenName;
     private static Double[] outputCrypto;
     public static void main(String[] args) {
-        CryptoData data = new CryptoData();
         Scanner scan = new Scanner(System.in);
         System.out.println("Set token name: ");
         String value= scan.nextLine();
+        getMainData(value);
 
-        //Цена токена
-        priceResultXlm = cryptoOnlinePrice(data.tokenOption(value));
-        //Имя токена
-        tokenName =cryptoOnlineName(data.tokenOption(value));
-        //Сумма вклада
-        depAmount =data.setDepAmount();
-        //Цена токена на момент покупки
-        tokenPriceAtBuyMoment = data.tokenPriceAtByMoment();
         //Вычисления
         CryptoMath math = new CryptoMath(tokenName,depAmount,tokenPriceAtBuyMoment,priceResultXlm);
         math.outputResultCalc();
@@ -38,8 +29,23 @@ public class Main {
         ////////////////////////////Sign to db////////////////////////////////////////////
 
         DBConnection crypto = new DBConnection();
+
         crypto.dbInsertion(tokenName,outputCrypto[0],outputCrypto[1],outputCrypto[2]
                 ,outputCrypto[3],outputCrypto[4],outputCrypto[5]);
+
+        //Db Result viev
+        crypto.getDbResult();
+
+
+    }
+    private static void getMainData(String value){
+        CryptoData data = new CryptoData();
+        priceResultXlm = cryptoOnlinePrice(data.tokenOption(value));
+        //Имя токена
+        tokenName =cryptoOnlineName(data.tokenOption(value));
+        //Сумма вклада
+        depAmount =data.setDepAmount();
+        //Цена токена на момент покупки
+        tokenPriceAtBuyMoment = data.tokenPriceAtByMoment();
     }
 }
-
