@@ -28,8 +28,20 @@ public class Main {
             //Готовый массив даблов
             outputCrypto = math.returnResultDouble();
             //Добавление в бд
-            crypto.dbInsertion(tokenName,outputCrypto[0],outputCrypto[1],outputCrypto[2]
+            crypto.dbInsertion(tokenName
+                    ,outputCrypto[0],outputCrypto[1],outputCrypto[2]
                     ,outputCrypto[3],outputCrypto[4],outputCrypto[5]);
+
+            System.out.println("\n Want to see data? Y / N ");
+
+            iW = scan.nextLine();
+
+            if (iW.equals("Y")){
+                crypto.getDbResult();
+            }else if(iW.equals("N")){
+                System.out.println("Closing app... ");
+            }
+
         }else if(iW.equals("W") || iW.equals("w")){
             System.out.println();
             //Вывод бд в терминал
